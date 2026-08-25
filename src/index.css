@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-academic-50 text-academic-800 antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply text-blue-900;
+  }
+}
+
+@layer components {
+  .formula-fraction {
+    @apply inline-flex flex-col items-center align-middle mx-1;
+  }
+
+  .formula-numerator {
+    @apply border-b-2 border-academic-700 px-2 pb-0.5 text-center;
+  }
+
+  .formula-denominator {
+    @apply pt-0.5 px-2 text-center;
+  }
+
+  .formula-nth-root {
+    @apply inline-flex items-stretch align-middle mx-1;
+  }
+
+  .formula-root-index {
+    @apply self-start text-sm font-semibold leading-none pr-0.5 pt-0.5;
+  }
+
+  .formula-radicand {
+    @apply border-t-2 border-academic-700 px-2 pt-0.5;
+  }
+}
