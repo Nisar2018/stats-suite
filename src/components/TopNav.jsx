@@ -145,7 +145,7 @@ export function TopNav({ activePage, onNavigate }) {
           >
             Σ
           </span>
-          <span className="hidden text-lg font-bold text-white sm:inline">{siteConfig.name}</span>
+          <span className="hidden text-lg font-bold text-white sm:inline">MyStatCalculator</span>
         </button>
 
         <nav className="hidden items-center gap-1 lg:flex" aria-label="Main menu">

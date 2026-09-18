@@ -9,13 +9,13 @@
   "lang": "en",
   "icons": [
     {
-      "src": "/images/logo_statssuite.png",
+      "src": "/images/mystatcalculator.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/images/logo_statssuite.png",
+      "src": "/images/mystatcalculator.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

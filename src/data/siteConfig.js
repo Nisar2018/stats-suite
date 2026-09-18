@@ -33,7 +33,7 @@ export const footerNavItems = [
 export const siteConfig = {
   name: 'StatsSuite',
   tagline: 'Interactive Statistics Learning',
-  logo: '/images/logo_statssuite.png',
+  logo: '/images/mystatcalculator.png',
   heroBanner: '/images/Hero banner StatsSuite.jpg',
 };
 

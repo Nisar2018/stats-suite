@@ -21,7 +21,7 @@ export const siteSeo = {
   defaultKeywords:
     'statistics calculator, free statistics calculator online, central tendency calculator, mean median mode calculator, standard deviation calculator, variance calculator, frequency table, histogram, probability calculator, permutation combination, percentage calculator, StatsSuite, mystatcalculator',
   author: siteConfig.name,
-  ogImage: '/images/logo_statssuite.png',
+  ogImage: '/images/mystatcalculator.png',
   twitterCard: 'summary_large_image',
   locale: 'en_US',
   type: 'website',
