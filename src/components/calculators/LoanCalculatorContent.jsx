@@ -1,4 +1,5 @@
 import { LoanCalculator } from '../financial/LoanCalculator';
+import { TopicHeader } from '../TopicHeader';
 
 function FormulaBox({ children }) {
   return (
@@ -20,9 +21,8 @@ function ExampleCard({ title, children }) {
 export function LoanCalculatorContent() {
   return (
     <div className="space-y-6 p-4 sm:p-6 md:p-8">
-      <div>
-        <h1 className="text-center text-2xl font-bold text-blue-900 md:text-3xl">Loan Calculator</h1>
-        <div className="mx-auto mt-4 max-w-4xl space-y-3 text-academic-700">
+      <TopicHeader breadcrumb="Math Calculators › Loan Calculator" title="Loan Calculator" />
+      <div className="mx-auto max-w-4xl space-y-3 text-academic-700">
           <p>
             A loan is a financial agreement between a lender and a borrower, where the borrower is given a sum
             of money—the principal—and must pay it back over time. Loans are among the most popular methods
@@ -41,7 +41,6 @@ export function LoanCalculatorContent() {
             <strong className="text-lg text-blue-900">Bonds</strong> guarantee a set lump sum—the face value or
             par value—to be paid to the bondholder at maturity.
           </p>
-        </div>
       </div>
 
       <LoanCalculator />

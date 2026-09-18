@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { MortgageCalculator } from '../financial/MortgageCalculator';
+import { TopicHeader } from '../TopicHeader';
 
 const FAQS = [
   {
@@ -33,16 +34,17 @@ export function MortgageCalculatorContent() {
 
   return (
     <div className="space-y-6 p-4 sm:p-6 md:p-8">
-      <div>
-        <h1 className="text-2xl font-bold text-blue-900 md:text-3xl">Mortgage Calculator</h1>
-        <p className="mt-3 max-w-4xl leading-relaxed text-academic-700">
+      <TopicHeader
+        breadcrumb="Math Calculators › Mortgage Calculator"
+        title="Mortgage Calculator"
+      />
+      <p className="max-w-4xl leading-relaxed text-academic-700">
           A mortgage calculator is a simple yet powerful online tool that helps you estimate your monthly
           loan payments, interest costs, and the overall cost of buying a home. By entering details such as
           loan amount, interest rate, tenure, and repayment type, you can get a clear breakdown of your
           mortgage in seconds. This allows you to plan your budget, compare loan options, and make smarter
           financial decisions when purchasing a property.
-        </p>
-      </div>
+      </p>
 
       <MortgageCalculator />
 

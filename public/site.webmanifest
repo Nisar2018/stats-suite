@@ -1,8 +1,8 @@
 {
   "name": "StatsSuite",
   "short_name": "StatsSuite",
-  "description": "Interactive statistics learning with free calculators, formulas, and step-by-step solutions.",
-  "start_url": "/#/",
+  "description": "Free interactive statistics calculators for central tendency, dispersion, charts, probability, and math tools — with formulas and step-by-step solutions.",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#f8fafc",
   "theme_color": "#1e3a5f",

@@ -10,10 +10,16 @@ import { RepresentationOfDataPage } from './components/RepresentationOfDataPage'
 import { ProbabilityPage } from './components/ProbabilityPage';
 import { SeoHead } from './components/SeoHead';
 import { DEFAULT_TOPICS, resolveSeo } from './data/seoConfig';
-import { buildHash, parseHash, replaceHash } from './utils/routing';
+import {
+  buildPath,
+  migrateHashToPath,
+  parseLocation,
+  pushPath,
+  replacePath,
+} from './utils/routing';
 
 function App() {
-  const initial = parseHash();
+  const initial = parseLocation();
   const [activePage, setActivePage] = useState(initial.pageId);
   const [activeTopic, setActiveTopic] = useState(
     initial.topicId ?? DEFAULT_TOPICS[initial.pageId] ?? null,
@@ -23,30 +29,33 @@ function App() {
     const topic = DEFAULT_TOPICS[pageId] ?? null;
     setActivePage(pageId);
     setActiveTopic(topic);
-    window.location.hash = buildHash(pageId, topic);
+    pushPath(pageId, topic);
   }, []);
 
   const handleTopicChange = useCallback(
     (topicId) => {
       setActiveTopic(topicId);
-      replaceHash(activePage, topicId);
+      replacePath(activePage, topicId);
     },
     [activePage],
   );
 
   useEffect(() => {
-    const onHashChange = () => {
-      const { pageId, topicId } = parseHash();
+    migrateHashToPath();
+
+    const syncFromLocation = () => {
+      const { pageId, topicId } = parseLocation();
       setActivePage(pageId);
       setActiveTopic(topicId ?? DEFAULT_TOPICS[pageId] ?? null);
     };
 
-    if (!window.location.hash || window.location.hash === '#') {
-      replaceHash(activePage, activeTopic);
+    const expected = buildPath(activePage, activeTopic);
+    if (window.location.pathname !== expected || window.location.hash) {
+      replacePath(activePage, activeTopic);
     }
 
-    window.addEventListener('hashchange', onHashChange);
-    return () => window.removeEventListener('hashchange', onHashChange);
+    window.addEventListener('popstate', syncFromLocation);
+    return () => window.removeEventListener('popstate', syncFromLocation);
     // Only bind once on mount
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -59,7 +68,12 @@ function App() {
   const renderPage = () => {
     switch (activePage) {
       case 'home':
-        return <HomePage onStartLearning={() => handleNavigate('central-tendency')} />;
+        return (
+          <HomePage
+            onStartLearning={() => handleNavigate('central-tendency')}
+            onNavigate={handleNavigate}
+          />
+        );
       case 'central-tendency':
         return (
           <CentralTendencyPage

@@ -1,18 +1,17 @@
 import { FinanceCalculator } from '../financial/FinanceCalculator';
+import { TopicHeader } from '../TopicHeader';
 
 export function FinanceCalculatorContent() {
   return (
     <div className="space-y-6 p-4 sm:p-6 md:p-8">
-      <div>
-        <h1 className="text-2xl font-bold text-blue-900 md:text-3xl">Finance Calculator</h1>
-        <p className="mt-3 max-w-4xl leading-relaxed text-academic-700">
+      <TopicHeader breadcrumb="Math Calculators › Finance Calculator" title="Finance Calculator" />
+      <p className="max-w-4xl leading-relaxed text-academic-700">
           A finance calculator simplifies the solution of most time value of money problems. It is
           simple to calculate the Future Value (FV), Present Value (PV), Interest Rate (I/Y), Periodic
           Payment (PMT), and Number of Compounding Periods (N). Each tab is formatted to help you
           obtain the precise value you require with a few clicks. It works like well-known financial
           calculators such as the BA II Plus or HP 12CP, in a convenient online version.
-        </p>
-      </div>
+      </p>
 
       <FinanceCalculator />
 

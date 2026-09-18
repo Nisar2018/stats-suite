@@ -1,4 +1,5 @@
 import { GWACalculator } from '../math/GWACalculator';
+import { TopicHeader } from '../TopicHeader';
 
 const FAQS = [
   {
@@ -26,17 +27,16 @@ const FAQS = [
 export function GWACalculatorContent() {
   return (
     <div className="space-y-6 p-4 sm:p-6 md:p-8">
-      <div>
-        <h1 className="text-center text-2xl font-bold text-blue-900 md:text-3xl">
-          Free Online GWA Calculator
-        </h1>
-        <p className="mx-auto mt-3 max-w-4xl text-lg leading-relaxed text-academic-700">
+      <TopicHeader
+        breadcrumb="Math Calculators › GWA Calculator"
+        title="Free Online GWA Calculator"
+      />
+      <p className="mx-auto max-w-4xl text-lg leading-relaxed text-academic-700">
           Use this <strong>GWA Calculator</strong> to quickly and accurately compute your General Weighted
           Average. Enter your grades and units for each subject, and the calculator will provide your overall
           academic performance instantly. Perfect for students tracking their GPA or planning for honors and
           scholarships.
-        </p>
-      </div>
+      </p>
 
       <div className="mx-auto max-w-lg rounded-2xl border-4 border-blue-100 bg-white p-4 shadow-md sm:p-6">
         <GWACalculator />

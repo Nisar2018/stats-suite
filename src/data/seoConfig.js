@@ -9,17 +9,17 @@ import { mathCalculatorMenuSections } from './mathCalculatorMenuConfig';
 export const SITE_ORIGIN =
   typeof window !== 'undefined' && window.location?.origin
     ? window.location.origin
-    : 'https://statssuite.com';
+    : 'https://mystatcalculator.com';
 
 export const siteSeo = {
   name: siteConfig.name,
   tagline: siteConfig.tagline,
-  defaultTitle: `${siteConfig.name} — Interactive Statistics Learning & Free Calculators`,
+  defaultTitle: `${siteConfig.name} — Free Statistics Calculators Online | Mean, Median, Mode, Probability`,
   titleTemplate: `%s | ${siteConfig.name}`,
   defaultDescription:
-    'Learn statistics with free interactive calculators for central tendency, dispersion, charts, and math tools. Formulas and step-by-step solutions included.',
+    'Free interactive statistics calculators for central tendency (mean, median, mode), dispersion (range, variance, SD), frequency tables, charts, probability, and math tools — with formulas and step-by-step solutions.',
   defaultKeywords:
-    'statistics calculator, central tendency, mean median mode, standard deviation, frequency table, histogram, free math calculator, StatsSuite',
+    'statistics calculator, free statistics calculator online, central tendency calculator, mean median mode calculator, standard deviation calculator, variance calculator, frequency table, histogram, probability calculator, permutation combination, percentage calculator, StatsSuite, mystatcalculator',
   author: siteConfig.name,
   ogImage: '/images/logo_statssuite.png',
   twitterCard: 'summary_large_image',
@@ -599,10 +599,10 @@ export function resolveSeo(pageId, topicId) {
 
   const path =
     topicId && TOPIC_PARENT[topicId] && TOPIC_PARENT[topicId] !== topicId
-      ? `/#/${TOPIC_PARENT[topicId]}/${topicId}`
+      ? `/${TOPIC_PARENT[topicId]}/${topicId}`
       : pageId === 'home'
-        ? '/#/'
-        : `/#/${pageId}`;
+        ? '/'
+        : `/${pageId}`;
 
   return {
     title,
@@ -615,42 +615,83 @@ export function resolveSeo(pageId, topicId) {
 }
 
 export function buildJsonLd(seo) {
-  const url = `${SITE_ORIGIN}${seo.canonicalPath === '/#/' ? '/' : seo.canonicalPath}`;
+  const url = `${SITE_ORIGIN}${seo.canonicalPath === '/' ? '/' : seo.canonicalPath}`;
+  const graph = [
+    {
+      '@type': 'WebSite',
+      name: siteSeo.name,
+      url: SITE_ORIGIN,
+      description: siteSeo.defaultDescription,
+      publisher: {
+        '@type': 'Organization',
+        name: siteSeo.name,
+        url: SITE_ORIGIN,
+        logo: `${SITE_ORIGIN}${siteSeo.ogImage}`,
+      },
+    },
+    {
+      '@type': 'WebApplication',
+      name: siteSeo.name,
+      url: SITE_ORIGIN,
+      applicationCategory: 'EducationalApplication',
+      operatingSystem: 'Any',
+      offers: {
+        '@type': 'Offer',
+        price: '0',
+        priceCurrency: 'USD',
+      },
+      description: siteSeo.defaultDescription,
+    },
+    {
+      '@type': 'WebPage',
+      name: seo.title,
+      description: seo.description,
+      url,
+      isPartOf: { '@type': 'WebSite', name: siteSeo.name, url: SITE_ORIGIN },
+    },
+  ];
+
+  if (seo.pageId === 'home') {
+    graph.push({
+      '@type': 'ItemList',
+      name: `What You Will Learn on ${siteSeo.name}`,
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Central Tendency',
+          url: `${SITE_ORIGIN}/central-tendency/mean-ungrouped`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'Measurement of Dispersion',
+          url: `${SITE_ORIGIN}/measurement-of-dispersion/range-ungrouped`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: 'Representation of Data',
+          url: `${SITE_ORIGIN}/representation-of-data/freq-continuous`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 4,
+          name: 'Probability',
+          url: `${SITE_ORIGIN}/probability/prob-factorial`,
+        },
+        {
+          '@type': 'ListItem',
+          position: 5,
+          name: 'Math Calculators',
+          url: `${SITE_ORIGIN}/basic-calculator`,
+        },
+      ],
+    });
+  }
+
   return {
     '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebSite',
-        name: siteSeo.name,
-        url: SITE_ORIGIN,
-        description: siteSeo.defaultDescription,
-        publisher: {
-          '@type': 'Organization',
-          name: siteSeo.name,
-          url: SITE_ORIGIN,
-          logo: `${SITE_ORIGIN}${siteSeo.ogImage}`,
-        },
-      },
-      {
-        '@type': 'WebApplication',
-        name: siteSeo.name,
-        url: SITE_ORIGIN,
-        applicationCategory: 'EducationalApplication',
-        operatingSystem: 'Any',
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-        },
-        description: siteSeo.defaultDescription,
-      },
-      {
-        '@type': 'WebPage',
-        name: seo.title,
-        description: seo.description,
-        url,
-        isPartOf: { '@type': 'WebSite', name: siteSeo.name, url: SITE_ORIGIN },
-      },
-    ],
+    '@graph': graph,
   };
 }

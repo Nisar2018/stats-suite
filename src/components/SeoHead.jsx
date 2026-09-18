@@ -52,7 +52,7 @@ export function SeoHead({ seo }) {
     upsertMeta('name', 'googlebot', 'index, follow');
     upsertMeta('name', 'theme-color', '#1e3a5f');
 
-    const canonicalUrl = `${SITE_ORIGIN}${seo.canonicalPath === '/#/' ? '/' : seo.canonicalPath}`;
+    const canonicalUrl = `${SITE_ORIGIN}${seo.canonicalPath === '/' ? '/' : seo.canonicalPath}`;
     const ogImage = `${SITE_ORIGIN}${siteSeo.ogImage}`;
 
     upsertLink('canonical', canonicalUrl);

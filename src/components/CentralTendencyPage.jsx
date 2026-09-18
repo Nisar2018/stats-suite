@@ -22,7 +22,7 @@ export function CentralTendencyPage({ initialTopic = 'mean-ungrouped', onTopicCh
     if (initialTopic && initialTopic !== activeTopic) {
       setActiveTopic(initialTopic);
     }
-    // Sync from URL/hash only when parent topic changes
+    // Sync from URL only when parent topic changes
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialTopic]);
 

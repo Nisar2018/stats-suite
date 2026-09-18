@@ -1,3 +1,5 @@
+import { TopicHeader } from './TopicHeader';
+
 const pageContents = {
   about: {
     title: 'About Us',
@@ -87,8 +89,7 @@ export function StaticPage({ pageId }) {
 
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 md:px-6 md:py-14">
-      <h1 className="text-3xl font-bold text-blue-900 md:text-4xl">{content.title}</h1>
-      <p className="mt-2 text-lg text-academic-600">{content.subtitle}</p>
+      <TopicHeader title={content.title} breadcrumb={content.subtitle} />
 
       <div className="mt-8 space-y-8">
         {content.sections.map((section) => (

@@ -1,9 +1,13 @@
 import { PercentageCalculator } from '../math/PercentageCalculator';
+import { TopicHeader } from '../TopicHeader';
 
 export function PercentageCalculatorContent() {
   return (
     <div className="space-y-6 p-4 sm:p-6 md:p-8">
-      <h1 className="text-2xl font-bold text-blue-900 md:text-3xl">Percentage Calculator</h1>
+      <TopicHeader
+        breadcrumb="Math Calculators › Percentage Calculator"
+        title="Percentage Calculator"
+      />
 
       <PercentageCalculator />
 

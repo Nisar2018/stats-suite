@@ -1,4 +1,5 @@
 import { Calculator } from '../math/Calculator';
+import { TopicHeader } from '../TopicHeader';
 
 const operatorRows = [
   { operator: '÷', fn: 'Division', example: <>100 ÷ 4 = <strong>25</strong></> },
@@ -19,7 +20,7 @@ const operatorRows = [
 export function BasicCalculatorContent() {
   return (
     <div className="space-y-6 p-4 sm:p-6 md:p-8">
-      <h1 className="text-2xl font-bold text-blue-900 md:text-3xl">Basic Calculator</h1>
+      <TopicHeader breadcrumb="Math Calculators › Basic Calculator" title="Basic Calculator" />
 
       <div className="grid gap-6 lg:grid-cols-2">
         <Calculator />

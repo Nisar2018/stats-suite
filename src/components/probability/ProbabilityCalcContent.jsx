@@ -7,6 +7,7 @@ import {
 import { formatNum } from '../../utils/formatNumber';
 import { FormulaBox, Fraction } from '../FormulaBox';
 import { CalculationSteps } from '../CalculationSteps';
+import { SimpleEventExamples } from './SimpleEventExamples';
 
 const inputClass =
   'w-full rounded border border-academic-300 bg-white px-3 py-2 text-sm text-center focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-400';
@@ -22,6 +23,7 @@ function ResultCard({ label, value }) {
 
 export function ProbabilityCalcContent() {
   const [mode, setMode] = useState('simple');
+  const [simpleMode, setSimpleMode] = useState('examples');
   const [favorable, setFavorable] = useState('1');
   const [sampleSpace, setSampleSpace] = useState('6');
   const [pA, setPA] = useState('0.3');
@@ -98,41 +100,72 @@ export function ProbabilityCalcContent() {
 
       {mode === 'simple' && (
         <>
-          <div className="grid max-w-md gap-4 sm:grid-cols-2">
-            <div className="rounded-lg border border-academic-200 bg-white p-4 shadow-sm">
-              <label className="mb-1 block text-sm font-medium text-blue-900">
-                Outcomes of event A
-              </label>
-              <input
-                type="number"
-                min={0}
-                className={inputClass}
-                value={favorable}
-                onChange={(e) => setFavorable(e.target.value)}
-              />
-            </div>
-            <div className="rounded-lg border border-academic-200 bg-white p-4 shadow-sm">
-              <label className="mb-1 block text-sm font-medium text-blue-900">
-                Sample space outcomes
-              </label>
-              <input
-                type="number"
-                min={1}
-                className={inputClass}
-                value={sampleSpace}
-                onChange={(e) => setSampleSpace(e.target.value)}
-              />
-            </div>
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => setSimpleMode('examples')}
+              className={`rounded-lg px-3 py-1.5 text-sm font-medium ${
+                simpleMode === 'examples'
+                  ? 'bg-blue-900 text-white'
+                  : 'bg-academic-100 text-academic-800'
+              }`}
+            >
+              Examples
+            </button>
+            <button
+              type="button"
+              onClick={() => setSimpleMode('custom')}
+              className={`rounded-lg px-3 py-1.5 text-sm font-medium ${
+                simpleMode === 'custom'
+                  ? 'bg-blue-900 text-white'
+                  : 'bg-academic-100 text-academic-800'
+              }`}
+            >
+              Custom values
+            </button>
           </div>
-          {simpleResult?.error && (
-            <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
-              {simpleResult.error}
-            </p>
-          )}
-          {simpleResult && !simpleResult.error && (
+
+          {simpleMode === 'examples' ? (
+            <SimpleEventExamples />
+          ) : (
             <>
-              <ResultCard label="P(A)" value={formatNum(simpleResult.probability, 6)} />
-              <CalculationSteps steps={simpleResult.steps} />
+              <div className="grid max-w-md gap-4 sm:grid-cols-2">
+                <div className="rounded-lg border border-academic-200 bg-white p-4 shadow-sm">
+                  <label className="mb-1 block text-sm font-medium text-blue-900">
+                    Outcomes of event A
+                  </label>
+                  <input
+                    type="number"
+                    min={0}
+                    className={inputClass}
+                    value={favorable}
+                    onChange={(e) => setFavorable(e.target.value)}
+                  />
+                </div>
+                <div className="rounded-lg border border-academic-200 bg-white p-4 shadow-sm">
+                  <label className="mb-1 block text-sm font-medium text-blue-900">
+                    Sample space outcomes
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    className={inputClass}
+                    value={sampleSpace}
+                    onChange={(e) => setSampleSpace(e.target.value)}
+                  />
+                </div>
+              </div>
+              {simpleResult?.error && (
+                <p className="rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900">
+                  {simpleResult.error}
+                </p>
+              )}
+              {simpleResult && !simpleResult.error && (
+                <>
+                  <ResultCard label="P(A)" value={formatNum(simpleResult.probability, 6)} />
+                  <CalculationSteps steps={simpleResult.steps} />
+                </>
+              )}
             </>
           )}
         </>
