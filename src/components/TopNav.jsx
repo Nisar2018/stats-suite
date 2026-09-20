@@ -42,7 +42,7 @@ function NavDropdown({ item, activePage, onNavigate }) {
       {open && (
         <div className="absolute left-0 top-full z-50 min-w-[240px] pt-1">
           <ul
-            className="overflow-hidden rounded-lg border border-academic-200 bg-white py-1 shadow-lg"
+            className="overflow-hidden rounded-lg border border-white/15 bg-navy py-1 shadow-lg"
             role="menu"
           >
             {item.children.map((child) => (
@@ -51,10 +51,10 @@ function NavDropdown({ item, activePage, onNavigate }) {
                   type="button"
                   role="menuitem"
                   onClick={() => handleChildClick(child.id)}
-                  className={`w-full px-4 py-2.5 text-left text-sm transition-colors ${
+                  className={`w-full px-4 py-2.5 text-left text-sm text-white transition-colors ${
                     activePage === child.id
-                      ? 'bg-blue-50 font-semibold text-blue-900'
-                      : 'text-academic-700 hover:bg-academic-50 hover:text-blue-900'
+                      ? 'bg-white/20 font-semibold'
+                      : 'hover:bg-white/10'
                   }`}
                 >
                   {child.label}
