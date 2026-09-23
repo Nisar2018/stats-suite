@@ -12,15 +12,23 @@ function upsertMeta(attr, key, content) {
   el.setAttribute('content', content);
 }
 
-function upsertLink(rel, href) {
+function upsertLink(rel, href, attrs = {}) {
   if (!href) return;
-  let el = document.head.querySelector(`link[rel="${rel}"]`);
+  const sizeKey = attrs.sizes ? `[sizes="${attrs.sizes}"]` : '';
+  const typeKey = attrs.type ? `[type="${attrs.type}"]` : '';
+  let el = document.head.querySelector(`link[rel="${rel}"]${sizeKey}${typeKey}`);
+  if (!el && attrs.sizes) {
+    el = document.head.querySelector(`link[rel="${rel}"][sizes="${attrs.sizes}"]`);
+  }
   if (!el) {
     el = document.createElement('link');
     el.setAttribute('rel', rel);
     document.head.appendChild(el);
   }
   el.setAttribute('href', href);
+  Object.entries(attrs).forEach(([key, value]) => {
+    if (value != null) el.setAttribute(key, value);
+  });
 }
 
 function upsertJsonLd(data) {
@@ -56,6 +64,18 @@ export function SeoHead({ seo }) {
     const ogImage = `${SITE_ORIGIN}${siteSeo.ogImage}`;
 
     upsertLink('canonical', canonicalUrl);
+    upsertLink('icon', `${SITE_ORIGIN}/favicon.ico`, { sizes: 'any' });
+    upsertLink('icon', `${SITE_ORIGIN}/favicon-48x48.png?v=20260923`, {
+      type: 'image/png',
+      sizes: '48x48',
+    });
+    upsertLink('icon', `${SITE_ORIGIN}/favicon-192x192.png?v=20260923`, {
+      type: 'image/png',
+      sizes: '192x192',
+    });
+    upsertLink('apple-touch-icon', `${SITE_ORIGIN}/apple-touch-icon.png?v=20260923`, {
+      sizes: '180x180',
+    });
 
     upsertMeta('property', 'og:type', siteSeo.type);
     upsertMeta('property', 'og:site_name', siteSeo.name);
@@ -64,6 +84,10 @@ export function SeoHead({ seo }) {
     upsertMeta('property', 'og:description', seo.description);
     upsertMeta('property', 'og:url', canonicalUrl);
     upsertMeta('property', 'og:image', ogImage);
+    upsertMeta('property', 'og:image:width', '512');
+    upsertMeta('property', 'og:image:height', '512');
+    upsertMeta('property', 'og:image:type', 'image/png');
+    upsertMeta('property', 'og:image:alt', 'MyStatCalculator logo');
 
     upsertMeta('name', 'twitter:card', siteSeo.twitterCard);
     upsertMeta('name', 'twitter:title', seo.title);

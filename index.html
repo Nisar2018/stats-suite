@@ -23,8 +23,12 @@
 
     <link rel="canonical" href="https://mystatcalculator.com/" />
     <link rel="manifest" href="/site.webmanifest" />
-    <link rel="icon" type="image/png" href="/images/mystatcalculator.png" />
-    <link rel="apple-touch-icon" href="/images/mystatcalculator.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png?v=20260923" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png?v=20260923" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png?v=20260923" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260923" />
+    <link rel="shortcut icon" href="/favicon-48x48.png?v=20260923" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="StatsSuite" />
@@ -38,7 +42,11 @@
       content="Free interactive statistics calculators for central tendency, dispersion, charts, probability, and math tools — with formulas and step-by-step solutions."
     />
     <meta property="og:url" content="https://mystatcalculator.com/" />
-    <meta property="og:image" content="https://mystatcalculator.com/images/mystatcalculator.png" />
+    <meta property="og:image" content="https://mystatcalculator.com/favicon-512x512.png?v=20260923" />
+    <meta property="og:image:width" content="512" />
+    <meta property="og:image:height" content="512" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:alt" content="MyStatCalculator logo" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -49,7 +57,7 @@
       name="twitter:description"
       content="Free interactive statistics calculators for central tendency, dispersion, charts, probability, and math tools — with formulas and step-by-step solutions."
     />
-    <meta name="twitter:image" content="https://mystatcalculator.com/images/mystatcalculator.png" />
+    <meta name="twitter:image" content="https://mystatcalculator.com/favicon-512x512.png?v=20260923" />
 
     <script type="application/ld+json">
       {
@@ -57,19 +65,39 @@
         "@graph": [
           {
             "@type": "WebSite",
-            "name": "StatsSuite",
+            "name": "MyStatCalculator",
+            "alternateName": "StatsSuite",
             "url": "https://mystatcalculator.com/",
             "description": "Free interactive statistics calculators for central tendency, dispersion, charts, probability, and math tools — with formulas and step-by-step solutions.",
             "publisher": {
               "@type": "Organization",
-              "name": "StatsSuite",
+              "name": "MyStatCalculator",
               "url": "https://mystatcalculator.com/",
-              "logo": "https://mystatcalculator.com/images/mystatcalculator.png"
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://mystatcalculator.com/favicon-512x512.png?v=20260923",
+                "width": 512,
+                "height": 512
+              }
             }
           },
           {
+            "@type": "Organization",
+            "name": "MyStatCalculator",
+            "alternateName": ["StatsSuite", "My Stat Calculator"],
+            "url": "https://mystatcalculator.com/",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://mystatcalculator.com/favicon-512x512.png?v=20260923",
+              "width": 512,
+              "height": 512
+            },
+            "image": "https://mystatcalculator.com/favicon-512x512.png?v=20260923"
+          },
+          {
             "@type": "WebApplication",
-            "name": "StatsSuite",
+            "name": "MyStatCalculator",
+            "alternateName": "StatsSuite",
             "url": "https://mystatcalculator.com/",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Any",
@@ -78,11 +106,12 @@
               "price": "0",
               "priceCurrency": "USD"
             },
+            "image": "https://mystatcalculator.com/favicon-512x512.png?v=20260923",
             "description": "Free interactive statistics and math calculators with step-by-step solutions."
           },
           {
             "@type": "ItemList",
-            "name": "What You Will Learn on StatsSuite",
+            "name": "What You Will Learn on MyStatCalculator",
             "itemListElement": [
               {
                 "@type": "ListItem",
