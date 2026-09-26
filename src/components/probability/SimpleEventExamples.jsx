@@ -214,8 +214,8 @@ export const SIMPLE_EVENT_EXAMPLES = [
       { id: 'prime', label: 'Prime number (2, 3, 5)' },
       { id: 'composite', label: 'Composite number (4, 6)' },
       { id: 'multiple-of-3', label: 'Multiple of 3 (3, 6)' },
-      { id: 'gt3', label: 'Number greater than 3 (4, 5, 6)' },
-      { id: 'gt4', label: 'Number greater than 4 (5, 6)' },
+      { id: 'gt3', label: 'Number greater than or equal to 3 (3, 4, 5, 6)' },
+      { id: 'gt4', label: 'Number greater than or equal to 4 (4, 5, 6)' },
       { id: 'lt3', label: 'Number less than 3 (1, 2)' },
       { id: 'lt4', label: 'Number less than 4 (1, 2, 3)' },
       { id: 'leq4', label: 'Number less than or equal to 4 (1–4)' },
@@ -256,12 +256,14 @@ export const SIMPLE_EVENT_EXAMPLES = [
             description: 'Probability of getting a multiple of 3 when rolling one die',
           },
           gt3: {
-            outcomesA: 3,
-            description: 'Probability of getting a number greater than 3 when rolling one die',
+            outcomesA: 4,
+            description:
+              'Probability of getting a number greater than or equal to 3 when rolling one die',
           },
           gt4: {
-            outcomesA: 2,
-            description: 'Probability of getting a number greater than 4 when rolling one die',
+            outcomesA: 3,
+            description:
+              'Probability of getting a number greater than or equal to 4 when rolling one die',
           },
           lt3: {
             outcomesA: 2,
@@ -312,7 +314,7 @@ export const SIMPLE_EVENT_EXAMPLES = [
       { id: 'both-odd', label: 'Both dice show odd numbers' },
       { id: 'sum-even', label: 'Sum is even' },
       { id: 'sum-odd', label: 'Sum is odd' },
-      { id: 'sum-gt8', label: 'Sum greater than 8' },
+      { id: 'sum-gt8', label: 'Sum greater than or equal to 8' },
       { id: 'sum-lt5', label: 'Sum less than 5' },
       { id: 'at-least-one-6', label: 'At least one 6' },
       { id: 'at-least-one-1', label: 'At least one 1' },
@@ -389,8 +391,9 @@ export const SIMPLE_EVENT_EXAMPLES = [
             description: 'Probability that the sum is odd when rolling two dice',
           },
           'sum-gt8': {
-            outcomesA: 10,
-            description: 'Probability that the sum is greater than 8 when rolling two dice',
+            outcomesA: 15,
+            description:
+              'Probability that the sum is greater than or equal to 8 when rolling two dice',
           },
           'sum-lt5': {
             outcomesA: 6,
@@ -537,8 +540,8 @@ export const SIMPLE_EVENT_EXAMPLES = [
       { id: 'head-odd', label: 'Head and an odd number' },
       { id: 'tail-even', label: 'Tail and an even number' },
       { id: 'tail-odd', label: 'Tail and an odd number' },
-      { id: 'head-gt4', label: 'Head and number greater than 4' },
-      { id: 'tail-gt4', label: 'Tail and number greater than 4' },
+      { id: 'head-gt4', label: 'Head and number greater than or equal to 4' },
+      { id: 'tail-gt4', label: 'Tail and number greater than or equal to 4' },
       { id: 'any-head', label: 'Any Head result (Head + any of 1–6)' },
       { id: 'any-tail', label: 'Any Tail result (Tail + any of 1–6)' },
     ],
@@ -575,14 +578,14 @@ export const SIMPLE_EVENT_EXAMPLES = [
             description: 'Probability of Tail and an odd number when flipping a coin with a die',
           },
           'head-gt4': {
-            outcomesA: 2,
+            outcomesA: 3,
             description:
-              'Probability of Head and a number greater than 4 when flipping a coin with a die',
+              'Probability of Head and a number greater than or equal to 4 when flipping a coin with a die',
           },
           'tail-gt4': {
-            outcomesA: 2,
+            outcomesA: 3,
             description:
-              'Probability of Tail and a number greater than 4 when flipping a coin with a die',
+              'Probability of Tail and a number greater than or equal to 4 when flipping a coin with a die',
           },
           'any-head': {
             outcomesA: 6,
@@ -664,7 +667,7 @@ export const SIMPLE_EVENT_EXAMPLES = [
       { id: 'composite', label: 'Composite number (4, 6, 8, 9, 10)' },
       { id: 'multiple-of-3', label: 'Multiple of 3 (3, 6, 9)' },
       { id: 'multiple-of-5', label: 'Multiple of 5 (5, 10)' },
-      { id: 'gt5', label: 'Number greater than 5 (6–10)' },
+      { id: 'gt5', label: 'Number greater than or equal to 5 (5–10)' },
       { id: 'lt5', label: 'Number less than 5 (1–4)' },
       { id: 'leq5', label: 'Number less than or equal to 5 (1–5)' },
     ],
@@ -696,8 +699,9 @@ export const SIMPLE_EVENT_EXAMPLES = [
             description: 'Probability of picking a multiple of 5 from {1, 2, …, 10}',
           },
           gt5: {
-            outcomesA: 5,
-            description: 'Probability of picking a number greater than 5 from {1, 2, …, 10}',
+            outcomesA: 6,
+            description:
+              'Probability of picking a number greater than or equal to 5 from {1, 2, …, 10}',
           },
           lt5: {
             outcomesA: 4,
