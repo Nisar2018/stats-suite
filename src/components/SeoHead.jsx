@@ -64,18 +64,7 @@ export function SeoHead({ seo }) {
     const ogImage = `${SITE_ORIGIN}${siteSeo.ogImage}`;
 
     upsertLink('canonical', canonicalUrl);
-    upsertLink('icon', `${SITE_ORIGIN}/favicon.ico`, { sizes: 'any' });
-    upsertLink('icon', `${SITE_ORIGIN}/favicon-48x48.png?v=20260923`, {
-      type: 'image/png',
-      sizes: '48x48',
-    });
-    upsertLink('icon', `${SITE_ORIGIN}/favicon-192x192.png?v=20260923`, {
-      type: 'image/png',
-      sizes: '192x192',
-    });
-    upsertLink('apple-touch-icon', `${SITE_ORIGIN}/apple-touch-icon.png?v=20260923`, {
-      sizes: '180x180',
-    });
+    // Favicon / apple-touch links live only in index.html to avoid duplicates.
 
     upsertMeta('property', 'og:type', siteSeo.type);
     upsertMeta('property', 'og:site_name', siteSeo.name);

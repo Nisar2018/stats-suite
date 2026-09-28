@@ -21,7 +21,7 @@ export const siteSeo = {
   defaultKeywords:
     'statistics calculator, free statistics calculator online, central tendency calculator, mean median mode calculator, standard deviation calculator, variance calculator, frequency table, histogram, probability calculator, permutation combination, percentage calculator, StatsSuite, mystatcalculator',
   author: siteConfig.name,
-  ogImage: '/favicon-512x512.png?v=20260923',
+  ogImage: '/icon-512.png?v=2',
   twitterCard: 'summary_large_image',
   locale: 'en_US',
   type: 'website',
@@ -628,7 +628,7 @@ export function buildJsonLd(seo) {
         url: SITE_ORIGIN,
         logo: {
           '@type': 'ImageObject',
-          url: `${SITE_ORIGIN}/favicon-512x512.png?v=20260923`,
+          url: `${SITE_ORIGIN}/icon-512.png?v=2`,
           width: 512,
           height: 512,
         },
@@ -641,11 +641,11 @@ export function buildJsonLd(seo) {
       url: SITE_ORIGIN,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_ORIGIN}/favicon-512x512.png?v=20260923`,
+        url: `${SITE_ORIGIN}/icon-512.png?v=2`,
         width: 512,
         height: 512,
       },
-      image: `${SITE_ORIGIN}/favicon-512x512.png?v=20260923`,
+      image: `${SITE_ORIGIN}/icon-512.png?v=2`,
     },
     {
       '@type': 'WebApplication',
@@ -654,7 +654,7 @@ export function buildJsonLd(seo) {
       url: SITE_ORIGIN,
       applicationCategory: 'EducationalApplication',
       operatingSystem: 'Any',
-      image: `${SITE_ORIGIN}/favicon-512x512.png?v=20260923`,
+      image: `${SITE_ORIGIN}/icon-512.png?v=2`,
       offers: {
         '@type': 'Offer',
         price: '0',
